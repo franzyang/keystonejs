@@ -8,7 +8,7 @@ FROM node:${NODE_VERSION}-alpine AS build
 ARG DUMB_INIT_VERSION
 
 WORKDIR /home/node
-RUN apk add --no-cache build-base python2 && \
+RUN apk add --no-cache build-base python2 && npm install fs-capacitor --save && \
     wget -O dumb-init -q https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_amd64 && \
     chmod +x dumb-init
 ADD . /home/node
