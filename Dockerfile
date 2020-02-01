@@ -12,7 +12,7 @@ RUN apk add --no-cache build-base python2 && \
     wget -O dumb-init -q https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_amd64 && \
     chmod +x dumb-init
 ADD . /home/node
-RUN rm -rf ./node_modules && yarn install && yarn build && yarn cache clean
+RUN yarn install && yarn build && yarn cache clean
 #
 # Runtime container
 FROM node:${NODE_VERSION}-alpine
